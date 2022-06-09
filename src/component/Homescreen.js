@@ -23,7 +23,7 @@ const HomeScreen = ({ navigation }) => {
      // var data={"mobile":'9022923275'}
       
       console.log("in submit method")
-      navigation.navigate('Projectdetails')
+      navigation.navigate('Personaldetails')
 
        sendotp(navigation)
      console.log("after sendotp")

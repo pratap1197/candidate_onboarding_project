@@ -85,14 +85,14 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
        >
      <View style={{marginTop:15,borderRadius:10}}>
      <Card style={page.cardstyle}>
-        <Text style={{marginLeft:15,fontSize:16,marginTop:24,marginRight:181,marginBottom:15,color:'#000000',height:26,width:165, }}>Contact Information</Text>
+        <Text style={{marginLeft:wp('5%'),fontSize:16,marginTop:24,marginBottom:15,color:'#000000',height:26, }}>Contact Information</Text>
           
-          <Text  style={{height:22,width:120,fontSize:14,marginLeft:15,top:0,color:'#060606'}} >Email * </Text>
-        <View style={{marginTop:4,}} >
+          <Text  style={{height:22,width:120,fontSize:14,marginLeft:wp('5%'),top:0,color:'#060606'}} >Email * </Text>
+        <View style={{}} >
             
             <TextInput
             error={userError}
-            style={{left:15,marginTop:5,height:35,width:wp('58%'),borderColor:'#808080',borderRadius:10,borderWidth:1}}
+            style={{left:wp('5%'),marginTop:wp('0.6%'),height:hp('4%'),width:wp('58%'),borderColor:'#808080',borderRadius:10,borderWidth:1,paddingLeft:15}}
              value={email}
              keyboardType="email-address"
             placeholder="abc@gnail.com"
@@ -126,7 +126,7 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
             </TextInput  >
             {isFieldInError('email') &&
         getErrorsInField('email').map(errorMessage => (
-          <Text style={{color:'#ff0000',marginTop:5,marginLeft:15,width:210}} >{errorMessage}</Text>
+          <Text style={{color:'#ff0000',marginTop:5,marginLeft:wp('5%'),width:210}} >{errorMessage}</Text>
         ))}
 
 
@@ -140,13 +140,13 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
                  
                    <Text
                    
-                   style={{width:142,height:22,marginLeft:15,marginTop:26,fontSize:14}}
+                   style={{width:142,height:22,marginLeft:wp('5%'),marginTop:hp('3%'),fontSize:14}}
                    
                    >Alternate mobile no *</Text>
 
 <TextInput
             error={usermobileerror}
-            style={{left:15,marginTop:5,height:35,width:210,borderColor:'#808080',borderRadius:10,borderWidth:1}}
+            style={{left:wp('5%'),marginTop:wp('0.6%'),height:hp('4%'),width:wp('58%'),borderColor:'#808080',borderRadius:10,borderWidth:1,paddingLeft:15}}
              value={altermobile}
              
             placeholder="9022923275"
@@ -182,29 +182,29 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
             </TextInput  >
             {isFieldInError('altermobile') &&
         getErrorsInField('altermobile').map(errorMessage => (
-          <Text style={{color:'#ff0000',marginTop:5,marginLeft:15,width:210}} >{errorMessage}</Text>
+          <Text style={{color:'#ff0000',marginTop:5,marginLeft:wp('5%'),width:210}} >{errorMessage}</Text>
         ))}
             {/* <Text  style={{marginLeft:15,marginTop:5,color:'#ff0000',display:usermobileerror ? 'flex': 'none' }} > {altermobileerror}  </Text> */}
 
        <Text
-       style={{width:118,height:22,marginLeft:15,marginTop:17,fontSize:14}}
+       style={{width:118,height:22,marginLeft:wp('5%'),marginTop:hp('3%'),fontSize:14}}
        >Current address *</Text>
 
        <TextInput
        multiline={true}
-       placeholder='prakash floor mills, rahatani phata kalewadi pune'
+       placeholder='   prakash floor mills, rahatani phata kalewadi pune'
        value={currentad}
        onChangeText={(newtext)=>{
            setcurrentad(newtext)
            validate({currentad:{required:true}})
        }}
-       style={{width:210,height:56,marginLeft:15,marginTop:5,borderRadius:10,borderWidth:1,borderColor:'#808080'}}
+       style={{width:wp('58%'),height:hp('8%'),marginLeft:wp('5%'),marginTop:wp('0.6%'),borderRadius:10,borderWidth:1,borderColor:'#808080',paddingLeft:15}}
        >
 
        </TextInput>
        {isFieldInError('currentad') &&
         getErrorsInField('currentad').map(errorMessage => (
-          <Text style={{color:'#ff0000',marginTop:5,marginLeft:15,}} >{errorMessage}</Text>
+          <Text style={{color:'#ff0000',marginTop:5,marginLeft:wp('5%'),}} >{errorMessage}</Text>
         ))}
        <View style={page.checkboxContainer}>
        
@@ -231,7 +231,7 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
         <Text style={{width:135,height:19,fontSize:12,marginLeft:10,color:'#7037CE',marginTop:5}}>same address as above</Text>
       </View>
       <Text
-      style={{marginLeft:15,width:141,height:22,fontSize:14}}
+      style={{marginLeft:wp('5%'),width:141,height:22,fontSize:14,marginTop:hp('2%')}}
       
       >Permanent address *</Text>
 
@@ -246,7 +246,7 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
 
               }}
 
-       style={{width:210,height:56,marginLeft:15,marginTop:10,borderRadius:10,borderWidth:1,borderColor:'#808080'}}
+       style={{width:wp('58%'),height:hp('8%'),marginLeft:wp('5%'),marginTop:wp('0.6%'),borderRadius:10,borderWidth:1,borderColor:'#808080',paddingLeft:15}}
        
        >
 
@@ -254,14 +254,14 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
        </TextInput>
        {isFieldInError('paramad') &&
         getErrorsInField('paramad').map(errorMessage => (
-          <Text style={{color:'#ff0000',marginTop:5,marginLeft:15,}} >{errorMessage}</Text>
+          <Text style={{color:'#ff0000',marginTop:5,marginLeft:wp('5%'),}} >{errorMessage}</Text>
         ))}
 
         
 <View style={{marginTop:40,flexDirection:'row'}} >   
 
 <TouchableOpacity
-     style={{marginLeft:25,width:122,height:33,backgroundColor:'#808080',borderRadius:10}}
+     style={{marginLeft:wp('5%'),width:122,height:33,backgroundColor:'#808080',borderRadius:10}}
    
    >
      <Text style={{fontSize:15,width:64,height:26,alignContent:'center',alignSelf:'center',marginTop:5}}>Previous</Text>
@@ -270,7 +270,7 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
      style={{marginLeft:25,width:122,height:33,backgroundColor:isFormValid()? '#7037CE' : '#808080',borderRadius:10}}
    onPress={handle}
    >
-     <Text style={{fontSize:15,width:64,height:26,alignContent:'center',alignSelf:'center',marginTop:5}}>Next</Text>
+     <Text style={{fontSize:15,width:64,height:26,alignContent:'center',alignSelf:'center',marginTop:5,textAlign:'center'}}>Next</Text>
    </TouchableOpacity>
 
 
@@ -381,10 +381,10 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
                                                     checkboxContainer: {
                                                         flexDirection: "row",
                                                       
-                                                        marginTop:15,
+                                                        marginTop:hp('2%'),
                                                       },
                                                       checkbox: {
-                                                        marginLeft:15,
+                                                        marginLeft:wp('5%'),
                                                         
                                                         
                                                         transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }]

@@ -31,8 +31,8 @@ const Personaldetails = ({ navigation }) => {
 
    const [state,setState]=React.useState(new Date())
   
-  const [altermobile,setaltermobile]=React.useState('');
-  const [altermobileerror,setaltermobileerror]=React.useState('')
+  const [adharno,setadharno]=React.useState('');
+  const [adharnoerror,setadharnoerror]=React.useState('')
   const [firstname,setfirstname]=React.useState('');
   const [lastname,setlastname]=React.useState('');
   const [adhar,setadhar]=React.useState('');
@@ -44,7 +44,7 @@ const Personaldetails = ({ navigation }) => {
 
   const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid } =
   useValidation({
-    state: { firstname, lastname, gender, date,altermobile,adharname },
+    state: { firstname, lastname, gender, date,adharno,adharname },
   });
 
   const radioProps = [
@@ -74,7 +74,7 @@ const Personaldetails = ({ navigation }) => {
           lastname: { required: true },
           gender: {required: true },
           date: { date: 'YYYY-MM-DD' },
-          altermobile:{required:true,minlength:12, maxlength:12},
+          adharno:{required:true,minlength:12, maxlength:12},
           adharname:{required:true }
         //  role:{require:true}
           
@@ -107,13 +107,15 @@ const Personaldetails = ({ navigation }) => {
        >
      <View style={{marginTop:50,borderRadius:10}}>
      <Card style={page.cardstyle}>
-        <Text style={{marginLeft:15,fontSize:16,marginTop:24,marginRight:181,color:'#000000',height:26,width:128, }}>Personal details</Text>
-          
-          <Text  style={{height:22,width:120,fontSize:14,left:15,top:23,color:'#060606',marginBottom:20}} >Candidate name * </Text>
-        <View style={{flexDirection:'row',marginTop:0,}} >
+        <Text style={{marginLeft:wp('5%'),fontSize:16,marginTop:24,marginRight:181,color:'#000000',height:26,width:128, }}>Personal details</Text>
+          <View> 
+          <Text  style={{height:22,fontSize:hp('1.6%'),marginLeft:wp('5%'),top:23,color:'#060606',}} >Candidate name * </Text>
+
+              </View>
+               <View style={{flexDirection:'row',marginTop:hp('3%'),}} >
             <View style={{flexDirection:'column'}}> 
             <TextInput
-            style={{left:15,marginTop:5,height:35,width:135,borderColor:'#808080',borderRadius:10,borderWidth:1}}
+            style={{marginLeft:wp('5%'),height:hp('4%'),width:wp('33%'),borderColor:'#808080',borderRadius:10,borderWidth:1,paddingLeft:15}}
              value={firstname}
             placeholder="    firstname"
              onChangeText={(newtext)=>{
@@ -128,7 +130,7 @@ const Personaldetails = ({ navigation }) => {
             </TextInput  >
             {isFieldInError('firstname') &&
         getErrorsInField('firstname').map(errorMessage => (
-          <Text style={{color:'#ff0000',marginTop:5,marginLeft:15,width:135,}} >{errorMessage}</Text>
+          <Text style={{color:'#ff0000',marginTop:5,marginLeft:wp('5%'),width:135,}} >{errorMessage}</Text>
         ))}
 
           
@@ -137,11 +139,11 @@ const Personaldetails = ({ navigation }) => {
                  </View>
            
 
-         <View style={{flexDirection:'column',marginLeft:50}}>   
+         <View style={{flexDirection:'column',marginLeft:wp('10%')}}>   
          <TextInput
             placeholder='   lastname'
             value={lastname}
-            style={{width:135,height:35,borderColor:'#767474',borderRadius:10,borderWidth:1,marginTop:5}}
+            style={{width:wp('33%'),height:hp('4%'),borderColor:'#767474',borderRadius:10,borderWidth:1,paddingLeft:15}}
            onChangeText={(newtext)=>{setlastname(newtext)
             validate({lastname:{required:true}})
           }}
@@ -167,16 +169,16 @@ const Personaldetails = ({ navigation }) => {
 
 
         </View>
-          <Text style={{left:14,marginTop:20}} > Gender * </Text>
+          <Text style={{marginLeft:wp('5%'),marginTop:hp('3%'),fontSize:hp('1.6%')}} >Gender * </Text>
                
         
 
-          <View style={{ marginTop: 10 ,flexDirection:'row',marginBottom:20}}>
+          <View style={{ marginTop: hp('0.9%') ,flexDirection:'row',}}>
                 <RadioForm
                   buttonColor={'gray'}
                   formHorizontal={true}
                   buttonSize={12}
-                  radioStyle={{paddingTop:10,marginLeft:15}}
+                  radioStyle={{marginLeft:wp('5%')}}
                   selectedButtonColor="#000000"
                   radio_props={radioProps}
                   initial={0}
@@ -188,14 +190,14 @@ const Personaldetails = ({ navigation }) => {
                 />
                  {isFieldInError('gender') &&
         getErrorsInField('gender').map(errorMessage => (
-          <Text style={{color:'#ff0000'}} >{errorMessage}</Text>
+          <Text style={{color:'#ff0000',marginLeft:wp('5%')}} >{errorMessage}</Text>
         ))}
 
               </View>
               <Text
-              style={{marginTop:10,marginLeft:15,marginRight:213,width:100,height:22,fontSize:14}}
-              > Date of Birth *</Text>
-              <View style={{marginTop:5,marginLeft:0}}>
+              style={{marginTop:hp('3%'),marginLeft:wp('5%'),fontSize:hp('1.6%')}}
+              >Date of Birth *</Text>
+              <View style={{marginTop:0,}}>
                 
 
                  <DatePicker
@@ -214,16 +216,21 @@ const Personaldetails = ({ navigation }) => {
           customStyles={{
 
             dateInput: {
-              marginLeft: 15,
-              borderRadius:10
+            
+              marginLeft: wp('5%'),
+              borderRadius:10,
+              paddingLeft:15,
+              height:hp('4%'),
+              marginTop:hp('0.9%')
+              
             },
 
             dateIcon: {
               //display: 'none',
               
-              left: 15,
+              left: wp('5%'),
               top: 0,
-              marginLeft: 0,
+              marginLeft: 15,
             },
           }}
           onDateChange={(date) => {
@@ -233,7 +240,7 @@ const Personaldetails = ({ navigation }) => {
         />
          {isFieldInError('date') &&
         getErrorsInField('date').map(errorMessage => (
-          <Text style={{color:'#ff0000'}} >{errorMessage}</Text>
+          <Text style={{color:'#ff0000',marginLeft:wp('5%')}} >{errorMessage}</Text>
         ))}
 
               {/* <DateTimePicker 
@@ -248,32 +255,32 @@ const Personaldetails = ({ navigation }) => {
 
       <Text 
       
-      style={{marginTop:25,fontSize:14}}
-      >     Aadhar no *</Text>
+      style={{marginTop:hp('3%'),fontSize:hp('1.6%'),marginLeft:wp('5%')}}
+      >Aadhar no *</Text>
         <TextInput
             error={usermobileerror}
-            style={{left:15,marginTop:5,height:35,width:226,borderColor:'#808080',borderRadius:10,borderWidth:1}}
-             value={altermobile}
+            style={{left:wp('5%'),marginTop:hp('0.9%'),height:hp('4%'),width:wp('57%'),borderColor:'#808080',borderRadius:10,borderWidth:1,paddingLeft:15}}
+             value={adharno}
              
             placeholder="101112131415"
              onChangeText={(newtext)=>{  
-                 setaltermobile(newtext);
-                 validate({altermobile:{required:true}})
+                 setadharno(newtext);
+                 validate({adharno:{required:true}})
                console.log(newtext)
-               console.log(altermobile)
+               console.log(adharno)
 
               const reg = /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/i; 
               if (reg.test(newtext) === false  || newtext.length < 12   || newtext.length >12  ) {
-                  console.log(altermobile+" in false condition")
+                  console.log(adharno+" in false condition")
                   
-                  setaltermobileerror("please enter valid mobile number")
+                  setadharnoerror("please enter valid adhar number")
                   setusermobileerror(true)
                  // alert("it is not valid email")
                 
               } else {
                  console.log(newtext+"in true condition")
                   setusermobileerror(false)
-                 setaltermobileerror("")
+                 setadharnoerror("")
                 
               }
              // console.log(userError)
@@ -286,18 +293,18 @@ const Personaldetails = ({ navigation }) => {
             >
 
             </TextInput  >
-            {isFieldInError('altermobile') &&
-        getErrorsInField('altermobile').map(errorMessage => (
-          <Text style={{color:'#ff0000',marginLeft:15}} >{errorMessage}</Text>
+            {isFieldInError('adharno') &&
+        getErrorsInField('adharno').map(errorMessage => (
+          <Text style={{color:'#ff0000',marginLeft:wp('5%')}} >{errorMessage}</Text>
         ))}
 
-            <Text  style={{marginLeft:15,marginTop:5,color:'#ff0000',display:usermobileerror ? 'flex': 'none' }} > {altermobileerror}  </Text>
+            <Text  style={{marginLeft:wp('5%'),marginTop:5,color:'#ff0000',display:usermobileerror ? 'flex': 'none' }} > {adharnoerror}  </Text>
 
 
       <Text
-      style={{marginLeft:15,marginTop:18,fontSize:14}}
+      style={{marginLeft:wp('5%'),marginTop:hp('3%'),fontSize:hp('1.6%')}}
       
-      >   Name as per aadhaar *</Text>
+      >Name as per aadhaar *</Text>
 
     <TextInput
     value={adharname}
@@ -308,14 +315,14 @@ const Personaldetails = ({ navigation }) => {
       
     }}
     placeholder='pratap bhimrao ekorge'
-    style={{marginLeft:15,marginTop:5,width:226,height:35,borderWidth:1,borderRadius:10,borderColor:'#808080'}}
+    style={{marginLeft:wp('5%'),marginTop:hp('0.9%'),width:wp('57%'),height:35,borderWidth:1,borderRadius:10,borderColor:'#808080',paddingLeft:15}}
     >
 
 
     </TextInput>
     {isFieldInError('adharname') &&
         getErrorsInField('adharname').map(errorMessage => (
-          <Text style={{color:'#ff0000',marginLeft:15}} >{errorMessage}</Text>
+          <Text style={{color:'#ff0000',marginLeft:wp('5%')}} >{errorMessage}</Text>
         ))}
 
               
@@ -329,13 +336,13 @@ const Personaldetails = ({ navigation }) => {
 
            <View  style={{       backgroundColor:isFormValid() ? '#7037CE' : buttoncolor,
                                  flex:0,
-                                 marginLeft:69,
-                                 marginRight:69,
+                                 marginLeft:wp('5%'),
+                               //  marginRight:69,
                                  marginTop:29,
-                                 height:45,
+                                 height:hp('5%'),
                                  
                                  borderRadius:10,
-                                 width:167,
+                                 width:wp('50%'),
                                  alignSelf:'center'
                                  
      }}>
@@ -448,8 +455,9 @@ const Personaldetails = ({ navigation }) => {
 
                                                      },
                                                      datePickerStyle: {
-                                                      width: 200,
-                                                      marginTop: 10,
+                                                      width:wp('44%'),
+                                                      marginTop: 0,
+                                                      
                                                     },
                                                                         
 

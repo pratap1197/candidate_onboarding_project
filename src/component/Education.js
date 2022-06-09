@@ -13,6 +13,13 @@ import { Form } from 'react-native-validator-form';
  const  Education=({ navigation })=> {
   const [date, setDate] = React.useState('');
   const [date2, setDate2] = React.useState('');
+  const [universityname,setuniversityname]=React.useState('');
+  const [course,setcourse]=React.useState('');
+  const [stream,setstream]=React.useState('');
+  const [startyear,setstartyear]=React.useState('');
+  const [endyear,setendyear]=React.useState('');
+  const [percentage,setpercentage]=React.useState('');
+  const [unit,setunit]=React.useState('');
 
 
   const [state,setstate]=React.useState('')
@@ -64,11 +71,11 @@ const handle=()=>{
     <Card style={styles.maincontainer}>
          <View style={{flexDirection:'row'}}>  
          <Text
-         style={{marginLeft:15,marginRight:105,width:180,height:26,fontSize:14,color:'#000000'}}
+         style={{marginLeft:wp('5%'),fontSize:hp('1.6%'),color:'#000000'}}
          
-         >   Educational Qualification</Text>
+         >Educational Qualification</Text>
        <TouchableOpacity
-       style={{width:30,height:30,borderRadius:25,marginRight:20,borderColor:'#A64CBD',marginLeft:0}}
+       style={{width:30,height:30,borderRadius:25,marginRight:20,borderColor:'#A64CBD',marginLeft:wp('30%')}}
        activeOpacity={0.7}
        
        
@@ -87,73 +94,81 @@ const handle=()=>{
             </View>
 
             <Text
-            style={{width:178,height:22,marginLeft:15,fontSize:14,marginTop:19}}
-            >  Board or university name *</Text>
+            style={{height:22,marginLeft:wp('5%'),fontSize:hp('1.6%'),marginTop:19}}
+            >Board or university name *</Text>
 
         
               <Dropdown
               placeholder='united nation university'
-               style={{marginLeft:15,width:219,height:41,marginTop:6,borderRadius:10,borderWidth:1,borderColor:"#808080",fontSize:14}}
+               style={{marginLeft:wp('5%'),width:wp('50%'),height:hp('4%'),marginTop:hp('0.6%'),borderRadius:10,borderWidth:1,borderColor:"#808080",fontSize:14}}
         
         data={data}
         onChangeText={(value)=> {
           console.log(value)
+            setuniversityname(value)
      
           }}
      
 
       />
       <View
-      style={{flexDirection:'row',marginTop:10}}
+      style={{flexDirection:'row',marginTop:hp('3%')}}
       >  
 
-       <Text
-       style={{marginLeft:15,width:126,height:22,fontSize:14}}
+
+      <View style={{flexDirection:'column',marginLeft:wp('5%')}}>   
+      <Text
+       style={{height:22,fontSize:hp('1.6%')}}
        
-       >  Course or degree * </Text>
-       <Text
-       style={{marginLeft:16,width:59,height:22,fontSize:14}}
-       >   Stream * </Text>
-
-      </View>
-      <View  style={{flexDirection:'row',marginTop:5}}>
-      
-        
-      
-
-     <Dropdown
-        style={{marginLeft:15,width:85,height:35,borderRadius:10,borderWidth:1,borderColor:"#808080",fontSize:12}}
+       >Course or degree * </Text>
+           <Dropdown
+        style={{width:wp('21%'),height:hp('4%'),borderRadius:10,borderWidth:1,borderColor:"#808080",fontSize:12,marginTop:hp('0.6%')}}
         placeholder='BE'
 
      data={data1}
      onChangeText={(value)=> {
       console.log(value)
+      setcourse(value)
  
       }}
  
      
      />
+        
+          </View>
+
+          <View style={{flexDirection:'column',marginLeft:wp('8%')}}>  
+          <Text
+       style={{height:22,fontSize:hp('1.6%')}}
+       >Stream * </Text>
+
 
 <Dropdown
-        style={{marginLeft:57,width:149,height:35,borderRadius:10,borderWidth:1,borderColor:"#808080",fontSize:12}}
+        style={{width:wp('33%'),height:hp('4%'),borderRadius:10,borderWidth:1,borderColor:"#808080",fontSize:12,marginTop:hp('0.6%')}}
         placeholder='computer science'
 
      data={data2}
      onChangeText={(value)=> {
      console.log(value)
+     setstream(value)
 
      }}
      
      />
 
-</View>
+            
+              </View>
+          
+
+      </View>
+   
 
 <Text
-style={{marginLeft:14,width:95,height:22,fontSize:14,marginTop:28}}
->  Passing year * </Text>
+style={{marginLeft:wp('5%'),height:22,fontSize:hp('1.6%'),marginTop:hp('3%')}}
+>Passing year * </Text>
        
        <View
-       style={{flexDirection:'row',marginTop:18}}
+       style={{flexDirection:'row',marginTop:hp('0.6%')}}
 
        >   
   <DatePicker
@@ -172,10 +187,10 @@ style={{marginLeft:14,width:95,height:22,fontSize:14,marginTop:28}}
                 customStyles={{
       
                   dateInput: {
-                    marginLeft: 15,
+                    marginLeft: wp('5%'),
                     borderRadius:10,
                      width:89,
-                     height:35
+                     height:hp('4%')
                   },
       
                   dateIcon: {
@@ -190,6 +205,7 @@ style={{marginLeft:14,width:95,height:22,fontSize:14,marginTop:28}}
                 }}
                 onDateChange={(date) => {
                   setDate(date);
+                  setstartyear(date)
                 }}
                 
               />
@@ -209,10 +225,10 @@ style={{marginLeft:14,width:95,height:22,fontSize:14,marginTop:28}}
                 customStyles={{
       
                   dateInput: {
-                    marginLeft: 26,
+                    marginLeft: wp('9%'),
                     borderRadius:10,
                      width:89,
-                     height:35
+                     height:hp('4%')
                   },
       
                   dateIcon: {
@@ -227,6 +243,7 @@ style={{marginLeft:14,width:95,height:22,fontSize:14,marginTop:28}}
                 }}
                 onDateChange={(date2) => {
                   setDate2(date2);
+                  setendyear(date2);
                 }}
                 
               />
@@ -235,26 +252,33 @@ style={{marginLeft:14,width:95,height:22,fontSize:14,marginTop:28}}
        </View>
 
     <View
-    style={{flexDirection:'row',marginTop:26}}
+    style={{flexDirection:'row',marginTop:hp('3%')}}
     
     >
-  <Text  style={{marginLeft:15,width:86,height:22,fontSize:14}}  >  Percentage *  </Text>
-   <Text   style={{marginLeft:56,width:39,height:22,fontSize:14}}  > Unit * </Text>  
 
-    </View>
+      <View style={{flexDirection:'column',marginLeft:wp('5%')}}> 
+      <Text  style={{height:22,fontSize:hp('1.6%')}}  >Percentage *  </Text>
+      <TextInput 
+         onChangeText={(value)=>{
 
-   <View  style={{flexDirection:'row',marginTop:9}}   >
+          setpercentage(value)
+         }}
+      
+      style={{width:wp('21%'),height:hp('4%'),borderWidth:1,borderRadius:10,borderColor:'#808080',textAlign:'center',marginTop:hp('0.6%')}}  placeholder='95' >
 
-     <TextInput style={{marginLeft:15,width:89,height:35,borderWidth:1,borderRadius:10,borderColor:'#808080',textAlign:'center'}}  placeholder='95' >
+</TextInput>
 
-     </TextInput>
+          </View>
 
-     <Dropdown
-        style={{marginLeft:56,width:89,height:35,borderRadius:10,borderWidth:1,borderColor:"#808080",fontSize:12}}
+          <View  style={{flexDirection:'column',marginLeft:wp('18%')}}>   
+          <Text   style={{height:22,fontSize:hp('1.6%')}}  > Unit * </Text>  
+          <Dropdown
+        style={{width:wp('15%'),height:hp('4%'),borderRadius:10,borderWidth:1,borderColor:"#808080",fontSize:12,marginTop:hp('0.6%')}}
         placeholder='unit'
 
      data={data3}
      onChangeText={(value)=> {
+       setunit(value)
      console.log(value)
 
      }}
@@ -262,22 +286,26 @@ style={{marginLeft:14,width:95,height:22,fontSize:14,marginTop:28}}
      />
 
 
-   </View>
+          </View>
+
+  
+    </View>
+
 
 
    <View style={{marginTop:40,flexDirection:'row'}} >   
 
    <TouchableOpacity
-        style={{marginLeft:25,width:122,height:33,backgroundColor:'#808080',borderRadius:10}}
+        style={{marginLeft:wp('5%'),width:wp('30%'),height:hp('4%'),backgroundColor:'#808080',borderRadius:10}}
       
       >
         <Text style={{fontSize:15,width:64,height:26,alignContent:'center',alignSelf:'center',marginTop:5}}>Previous</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={{marginLeft:25,width:122,height:33,backgroundColor:'#808080',borderRadius:10}}
+        style={{marginLeft:wp('9%'),width:wp('30%'),height:hp('4%'),backgroundColor:'#808080',borderRadius:10}}
       onPress={handle}
       >
-        <Text style={{fontSize:15,width:64,height:26,alignContent:'center',alignSelf:'center',marginTop:5}}>Next</Text>
+        <Text style={{fontSize:15,width:64,height:26,alignContent:'center',alignSelf:'center',marginTop:5,textAlign:'center'}}>Next</Text>
       </TouchableOpacity>
 
 
@@ -322,7 +350,7 @@ const styles=StyleSheet.create({
     datePickerStyle: {
 
       
-      marginTop: 10,
+      
     },
 
 })

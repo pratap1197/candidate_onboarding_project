@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text ,TextInput,Image,TouchableOpacity,StyleSheet} from 'react-native';
+import { Button, View, Text ,TextInput,Image,TouchableOpacity,StyleSheet,ScrollView} from 'react-native';
 import { Card } from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Form from 'react-native-validator-form/lib/Form';
@@ -21,7 +21,7 @@ import { ValidationRules } from 'react-native-validator-form';
   const [role,setrole]=React.useState('');
   const handle=()=>{
     validate({
-      title: {  required: true,minlength:2 },
+      title: {required: true },
       desc: { required: true },
       technology: {required: true },
       date: { date: 'YYYY-MM-DD' },
@@ -51,6 +51,9 @@ console.log(getErrorsInField)
 
 
           </View>
+          <ScrollView> 
+
+          
       <Card style={styles.maincontainer}>
       <Form onSubmit={()=>{
         
@@ -90,8 +93,8 @@ console.log(getErrorsInField)
        
        
        settitle({newtext})
-       validate({newtext:{required:true,minlength:2}})
- 
+       validate({title:{required:true}})
+         console.log(title)
         
        
        } 
@@ -102,12 +105,18 @@ console.log(getErrorsInField)
      </TextInput>
      {isFieldInError('title') &&
         getErrorsInField('title').map(errorMessage => (
-          <Text style={{color:'#ff0000',marginLeft:wp('5%')}} >{errorMessage}</Text>
+          <Text style={{color:'#ff0000',marginLeft:wp('5%')}}>{errorMessage}</Text>
         ))}
 
 
+
      <Text  style={{marginLeft:wp('5%'),marginTop:wp('6.4%'),width:139,height:22,fontSize:14}}>Project description *</Text>
-     <TextInput value={desc}  onChangeText={(newtext)=>{setdesc(newtext)}} style={{marginLeft:wp('5%'),width:wp('50%'),height:wp('8.4%'),borderRadius:10,borderWidth:1,borderColor:'#767474',marginTop:wp('2.4%'),paddingLeft:15}}  placeholder={'this project is about smart method for handling attendance and other activities'}  >
+     <TextInput value={desc}  onChangeText={(newtext)=>{
+       
+       setdesc(newtext)
+       validate({desc:{required:true}})
+    
+    }} style={{marginLeft:wp('5%'),width:wp('50%'),height:wp('8.4%'),borderRadius:10,borderWidth:1,borderColor:'#767474',marginTop:wp('2.4%'),paddingLeft:15}}  placeholder={'this project is about smart method for handling attendance and other activities'}  >
      </TextInput>
      {isFieldInError('desc') &&
         getErrorsInField('desc').map(errorMessage => (
@@ -139,7 +148,11 @@ console.log(getErrorsInField)
 Technology *
 </Text>
 
-<TextInput value={technology} onChangeText={(newtext)=>{settechnology(newtext)}} style={{marginLeft:wp('5%'),width:wp('50%'),height:wp('8.4%'),borderRadius:10,borderWidth:1,borderColor:'#767474',marginTop:wp('2.4%'),paddingLeft:15}}  placeholder={'  Angular'}  >
+<TextInput value={technology} onChangeText={(newtext)=>{
+  
+  settechnology(newtext)
+  validate({technology:{required:true}})
+  }} style={{marginLeft:wp('5%'),width:wp('50%'),height:wp('8.4%'),borderRadius:10,borderWidth:1,borderColor:'#767474',marginTop:wp('2.4%'),paddingLeft:15}}  placeholder={'  Angular'}  >
      </TextInput>
      {isFieldInError('technology') &&
         getErrorsInField('technology').map(errorMessage => (
@@ -149,7 +162,10 @@ Technology *
 
 
    <Text style={{marginLeft:wp('5%'),marginTop:wp('6.4%'),width:50,height:22}} >Role *</Text>
-   <TextInput  value={role}  onChangeText={setrole} style={{marginLeft:wp('5%'),width:wp('50%'),height:wp('8.4%'),borderRadius:10,borderWidth:1,borderColor:'#767474',marginTop:wp('2.4%'),paddingLeft:15}}  placeholder={'  coder'}  >
+   <TextInput  value={role}  onChangeText={(newtext)=>{
+     setrole(newtext)
+     validate({role:{required:true}})
+  }} style={{marginLeft:wp('5%'),width:wp('50%'),height:wp('8.4%'),borderRadius:10,borderWidth:1,borderColor:'#767474',marginTop:wp('2.4%'),paddingLeft:15}}  placeholder={'  coder'}  >
      </TextInput>
      {isFieldInError('role') &&
         getErrorsInField('role').map(errorMessage => (
@@ -162,16 +178,16 @@ Technology *
      <View style={{marginTop:30,flexDirection:'row'}} >   
 
    <TouchableOpacity
-        style={{marginLeft:wp('5%'),width:122,height:33,backgroundColor:'#808080',borderRadius:10}}
+        style={{marginLeft:wp('5%'),width:wp('30%'),height:hp('4.3%'),backgroundColor:'#808080',borderRadius:10}}
       
       >
-        <Text style={{fontSize:15,width:64,height:26,alignContent:'center',alignSelf:'center',marginTop:5}}>Previous</Text>
+        <Text style={{fontSize:15,width:64,height:26,alignContent:'center',alignSelf:'center',marginTop:5,textAlign:'center'}}>Previous</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={{marginLeft:25,width:122,height:33,backgroundColor:'#808080',borderRadius:10}}
+        style={{marginLeft:wp('10%'),width:wp('30%'),height:33,backgroundColor:isFormValid()? '#7037CE' : '#808080',borderRadius:10}}
       onPress={handle}
       >
-        <Text style={{fontSize:15,width:64,height:26,alignContent:'center',alignSelf:'center',marginTop:5}}>Next</Text>
+        <Text style={{fontSize:15,width:64,height:26,alignContent:'center',alignSelf:'center',marginTop:5,textAlign:'center'}}>Next</Text>
       </TouchableOpacity>
 
 
@@ -182,7 +198,7 @@ Technology *
 
       </Card>
 
-
+      </ScrollView>
       </View>
 
     </>
