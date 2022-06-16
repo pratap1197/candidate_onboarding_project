@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import * as React from 'react';
 import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,8 +12,14 @@ import Education from './component/Education';
 import Projectdetails from './component/Projectdetails';
 import BackdropProvider from '@mgcrea/react-native-backdrop-provider';
 import Employment from './component/Employment';
+import Dashboard from './component/Dashboard';
+import Profilemainpage from './component/Profilemainpage';
+import Drawer1 from './component/Drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
   export const Appcontext=React.createContext();
 const Stack = createNativeStackNavigator();
+
 
 function App() {
   const [mobile,setmobile]=React.useState("")
@@ -84,7 +91,12 @@ function App() {
     <Appcontext.Provider value={{mobile,setmobile,sendotp}}>
     <BackdropProvider>  
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+
+      <Stack.Navigator initialRouteName="Home"    screenOptions={{
+    headerShown: false
+  }}
+  >
+
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         <Stack.Screen name="Personaldetails" component={Personaldetails} />
@@ -92,9 +104,17 @@ function App() {
         <Stack.Screen name="Education" component={Education} />
         <Stack.Screen name="Projectdetails" component={ Projectdetails }  />
         <Stack.Screen name="Employment" component={ Employment }  />
+        <Stack.Screen name="Dashboard" component={ Dashboard }  />
+        <Stack.Screen name="Profilemainpage" component={ Profilemainpage }  />
+        <Stack.Screen name="Drawer1"  component={Drawer1}              options={{ headerShown: false}}
+       />
 
+      
 
       </Stack.Navigator>
+     
+    
+
     </NavigationContainer>
     </BackdropProvider>
     </Appcontext.Provider>

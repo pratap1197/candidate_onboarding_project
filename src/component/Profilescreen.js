@@ -72,7 +72,7 @@ const ref_input5=React.useRef();
    })
    //If response is not in json then in error
    .catch((error) => {
-     alert(JSON.stringify(error));
+     alert(JSON.stringify(error)); 
      console.error(error);
    });
     

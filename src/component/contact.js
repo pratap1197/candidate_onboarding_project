@@ -32,8 +32,8 @@ const Contact = ({ navigation }) => {
 
 
   
-  const [altermobile,setaltermobile]=React.useState(0);
-  const [altermobileerror,setaltermobileerror]=React.useState('')
+  const [alternate_mobile_number,setalternate_mobile_number]=React.useState(0);
+  const [alternate_mobile_numbererror,setalternate_mobile_numbererror]=React.useState('')
   const [emailerror,setemailerror]=React.useState();
   const [isSelected, setSelection] = React.useState(false);
   const [currentad,setcurrentad]=React.useState('');
@@ -47,7 +47,7 @@ const handle=()=>{
 
   validate({
     email: {  required: true,email:true},
-    altermobile: { required: true,numbers:true,minlength:10, maxlength:10 },
+    alternate_mobile_number: { required: true,numbers:true,minlength:10, maxlength:10 },
     gender: {required: true },
     currentad: { required:true },
     paramad:{required:true},
@@ -66,7 +66,7 @@ const handle=()=>{
 
 const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid } =
   useValidation({
-    state: { email, altermobile, currentad, paramad },
+    state: { email, alternate_mobile_number, currentad, paramad },
   });
     
     
@@ -147,27 +147,27 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
 <TextInput
             error={usermobileerror}
             style={{left:wp('5%'),marginTop:wp('0.6%'),height:hp('4%'),width:wp('58%'),borderColor:'#808080',borderRadius:10,borderWidth:1,paddingLeft:15}}
-             value={altermobile}
+             value={alternate_mobile_number}
              
             placeholder="9022923275"
              onChangeText={(newtext)=>{  
-                 setaltermobile(newtext);
-                 
+                 setalternate_mobile_number(newtext);
+                 validate({alternate_mobile_number:{numbers:true,required:true}})
                console.log(newtext)
-               console.log(altermobile)
+               console.log(alternate_mobile_number)
 
               const reg = /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/i; 
               if (reg.test(newtext) === false  || newtext.length < 10   || newtext.length >10  ) {
-                  console.log(altermobile+" in false condition")
+                  console.log(alternate_mobile_number+" in false condition")
                   
-                  setaltermobileerror("please enter valid mobile number")
+                  setalternate_mobile_numbererror("please enter valid mobile number")
                   setusermobileerror(true)
                  // alert("it is not valid email")
                 
               } else {
                  console.log(newtext+"in true condition")
                   setusermobileerror(false)
-                 setaltermobileerror("")
+                 setalternate_mobile_numbererror("")
                 
               }
               console.log(userError)
@@ -180,11 +180,11 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
             >
 
             </TextInput  >
-            {isFieldInError('altermobile') &&
-        getErrorsInField('altermobile').map(errorMessage => (
+            {isFieldInError('alternate_mobile_number') &&
+        getErrorsInField('alternate_mobile_number').map(errorMessage => (
           <Text style={{color:'#ff0000',marginTop:5,marginLeft:wp('5%'),width:210}} >{errorMessage}</Text>
         ))}
-            {/* <Text  style={{marginLeft:15,marginTop:5,color:'#ff0000',display:usermobileerror ? 'flex': 'none' }} > {altermobileerror}  </Text> */}
+            {/* <Text  style={{marginLeft:15,marginTop:5,color:'#ff0000',display:usermobileerror ? 'flex': 'none' }} > {alternate_mobile_numbererror}  </Text> */}
 
        <Text
        style={{width:118,height:22,marginLeft:wp('5%'),marginTop:hp('3%'),fontSize:14}}
@@ -241,7 +241,7 @@ const { validate, isFieldInError, getErrorsInField, getErrorMessages,isFormValid
               placeholder='prakash floor mills, rahatani phata kalewadi pune'
               onChangeText={(newtext)=>{
                   setparamad(newtext)
-                console.log(" param address textfield onchange "+altermobile) 
+                console.log(" param address textfield onchange "+alternate_mobile_number) 
                 validate({paramad:{required:true}})
 
               }}

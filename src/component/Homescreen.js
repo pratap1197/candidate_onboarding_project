@@ -6,6 +6,7 @@ import { AsyncStorage } from 'react-native';
 import { LogBox } from 'react-native';
 import { Appcontext } from '../App';
 
+import {useNavigation} from '@react-navigation/native';
 
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
@@ -14,6 +15,7 @@ import { Card, makeStyles } from 'react-native-elements';
 import { StyleSheet } from 'react-native';
 const HomeScreen = ({ navigation }) => {
   const{ mobile,setmobile,sendotp }= React.useContext(Appcontext)
+//  const navigation = useNavigation();
 
   //const {mobile}=React.useContext(Appcontext)
         const [buttoncolor,setbuttoncolor]=useState('#696969');
@@ -23,9 +25,11 @@ const HomeScreen = ({ navigation }) => {
      // var data={"mobile":'9022923275'}
       
       console.log("in submit method")
-      navigation.navigate('Personaldetails')
-
-       sendotp(navigation)
+     // navigation.navigate('Profilemainpage')
+     //this.props.navigation.navigate('nextScreen')
+ //this.navigation.navigate('Profilemainpage')
+ navigation.navigate('Drawer1');
+       sendotp()
      console.log("after sendotp")
        
     
